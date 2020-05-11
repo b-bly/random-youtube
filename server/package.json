@@ -2,12 +2,18 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.js --ext ts"
+    "clean": "rimraf dist/*",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "tsc": "tsc",
+    "build": "npm-run-all clean lint tsc",
+    "dev:start": "ts-node src/server.ts",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node ./dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Brendt Bly",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -15,8 +21,18 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/fs-extra": "^8.1.0",
+    "@types/morgan": "^1.9.0",
     "@types/node": "^13.13.5",
+    "@types/shelljs": "^0.8.7",
+    "fs-extra": "^9.0.0",
+    "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "shelljs": "^0.8.4",
     "ts-node": "^8.10.1",
+    "tslint": "^6.1.2",
     "typescript": "^3.8.3"
   }
 }
