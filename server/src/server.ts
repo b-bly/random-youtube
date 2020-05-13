@@ -1,20 +1,13 @@
-// enable requireing typescript files
-
-// let args = {files: true};
-// require('ts-node').register(args);
-
 import express from "express";
 import bodyParser from 'body-parser';
 import morgan from "morgan";
 
-// const  bodyParser = require('body-parser');
-// const morgan = require('morgan')
+// Routes
 
+import { router as movies } from './routes/movies';
 
 const app = express()
 const PORT = 8080
-
-// Routes
 
 // MIDDLEWARE
 app.use(morgan('dev'))
@@ -26,6 +19,8 @@ app.use(
 app.use(bodyParser.json())
 
 // routing
+
+app.use('/movies', movies);
 
 // Starting Server
 app.listen(PORT, () => {
