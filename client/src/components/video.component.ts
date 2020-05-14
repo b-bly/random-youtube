@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { createVideoScript } from '../util/util';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'video-player',
+  templateUrl: './video.component.html',
+  styleUrls: ['./video.component.scss']
 })
-export class Home implements OnInit {
+export class Video implements OnInit {
   ngOnInit() {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
+    // createVideoScript();
   }
-  title = 'movie-app';
+
 }
