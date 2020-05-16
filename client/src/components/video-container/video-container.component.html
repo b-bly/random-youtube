@@ -1,6 +1,7 @@
-<p>video-container works!</p>
-<div *ngFor="let video of videos">
+<div class="video-container" *ngFor="let video of videos">
   <video-player 
-    [video]=video>
+    [video]=video
+    [innerWidth]=innerWidth
+    [videosPerRow]=videosPerRow>
   </video-player>
 </div>

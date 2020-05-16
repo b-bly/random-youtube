@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 const videos: any = [
   {id: 'Ygo5VcMGMCs'},
@@ -15,6 +15,8 @@ const videos: any = [
 })
 export class VideoContainerComponent implements OnInit {
   videos: any = videos;
+  videosPerRow: number = 5;
+  @Input() innerWidth: number;
 
   constructor() { 
 
