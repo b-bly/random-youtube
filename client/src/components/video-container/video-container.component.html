@@ -1,7 +1,7 @@
 <div class="video-container" *ngFor="let video of videos">
   <video-player 
     [video]=video
-    [innerWidth]=innerWidth
-    [videosPerRow]=videosPerRow>
+    [height]=getHeight()
+    [width]=getWidth()>
   </video-player>
 </div>

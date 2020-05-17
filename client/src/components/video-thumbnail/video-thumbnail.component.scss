@@ -1,0 +1,22 @@
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  fa-icon {
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  &:hover {
+    fa-icon {
+      visibility: visible;
+      opacity:.5;
+      z-index: 2;
+    }
+    img {
+      opacity:.9;
+      
+    }
+  }
+}

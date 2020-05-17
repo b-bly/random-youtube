@@ -1,12 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { VideoService } from 'src/services/video-service';
 
-const videos: any = [
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'}
-];
 
 @Component({
   selector: 'video-container',
@@ -14,15 +8,20 @@ const videos: any = [
   styleUrls: ['./video-container.component.scss']
 })
 export class VideoContainerComponent implements OnInit {
-  videos: any = videos;
-  videosPerRow: number = 5;
+  @Input() videos: any;
+  @Input() videosPerRow: number;
   @Input() innerWidth: number;
 
-  constructor() { 
-
-   }
+  constructor(public videoService: VideoService) { }
 
   ngOnInit(): void {
   }
 
+  getWidth() {
+    return this.videoService.getWidth(this.innerWidth, this.videosPerRow)
+  }
+
+  getHeight() {
+    return this.videoService.getHeight(this.innerWidth, this.videosPerRow);
+  }
 }

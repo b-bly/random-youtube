@@ -8,24 +8,9 @@ import { createVideoScript } from '../../util/util';
 })
 export class Video implements OnInit {
   @Input() video: any;
-  @Input() videosPerRow: number = 1;
-  @Input() innerWidth: number;
+  @Input() height: number;
+  @Input() width: number;
 
-  ngOnInit() {
-    createVideoScript();
-
-  }
-
-  getWidth() {
-    const width =  this.innerWidth / this.videosPerRow;
-    console.log('width:')
-    console.log(width)
-    return width;
-  }
-
-  getHeight() {
-    const height = (this.getWidth() / 16) * 9;
-    return height;
-  }
+  ngOnInit() { }
 
 }
