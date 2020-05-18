@@ -20,19 +20,23 @@ const routes: Routes = [
     component: HomeLayout,
     children: [
       {
+        path: 'video/:id', component: PlayVideoComponent,
+      },
+      {
         path: '', component: Home,
       },
+
     ]
   },
-  {
-    path: 'video/:id',
-    component: HomeLayout,
-    children: [
-      {
-        path: '', component: PlayVideoComponent,
-      },
-    ]
-  }
+  // {
+  //   path: 'video/:id',
+  //   component: HomeLayout,
+  //   children: [
+  //     {
+  //       path: '', component: PlayVideoComponent,
+  //     },
+  //   ]
+  // }
 ];
 
 @NgModule({

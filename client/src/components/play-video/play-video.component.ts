@@ -25,9 +25,9 @@ export class PlayVideoComponent implements OnInit {
   }
 
   initializeVariables() {
-    this.route.parent.params.subscribe(params => { 
+    this.route.params.subscribe(params => { 
       this.videoId = params.id;
     });
-    console.log(this.videoId);
+    
   }
 }
