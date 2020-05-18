@@ -1,4 +1,4 @@
-<div class="thumbnail-container">
+<a class="thumbnail-container" [routerLink]="['/video', video.id]">
   <fa-icon [icon]="faPlay" size="2x"></fa-icon>
   <img src="{{thumbnailUrl}}" width="{{width}}" height="auto"/>
-</div>
+</a>

@@ -11,6 +11,7 @@ import { VideoThumbnailComponent } from '../components/video-thumbnail/video-thu
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VideoService } from '../services/video-service';
 import { VideoThumbnailContainerComponent } from 'src/components/video-thumbnail-container/video-thumbnail-container.component';
+import { PlayVideoComponent } from '../components/play-video/play-video.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,15 @@ const routes: Routes = [
         path: '', component: Home,
       },
     ]
+  },
+  {
+    path: 'video/:id',
+    component: HomeLayout,
+    children: [
+      {
+        path: '', component: PlayVideoComponent,
+      },
+    ]
   }
 ];
 
@@ -31,7 +41,8 @@ const routes: Routes = [
         Video,
         VideoContainerComponent,
         VideoThumbnailComponent,
-        VideoThumbnailContainerComponent
+        VideoThumbnailContainerComponent,
+        PlayVideoComponent
       ],
       imports: [
         RouterModule.forRoot(routes),
