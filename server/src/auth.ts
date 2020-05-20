@@ -24,7 +24,7 @@ function createConnection() {
   );
 }
 
-function getConnectionUrl(auth) {
+function getConnectionUrl(auth: any) {
   return auth.generateAuthUrl({
     access_type: 'offline',
     prompt: 'consent', // access type and approval prompt will force a new refresh token to be made each time signs in

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 import { createVideoScript } from 'src/util/util';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-play-video',
@@ -9,9 +9,10 @@ import { createVideoScript } from 'src/util/util';
   styleUrls: ['./play-video.component.scss']
 })
 export class PlayVideoComponent implements OnInit {
-  videoId;
+  videoId: string;
   height: string;
   width: string;
+  faArrowLeft = faArrowLeft;
 
   constructor(  private route: ActivatedRoute,
     private router: Router
@@ -28,6 +29,9 @@ export class PlayVideoComponent implements OnInit {
     this.route.params.subscribe(params => { 
       this.videoId = params.id;
     });
-    
+  }
+
+  back() {
+    this.router.navigate(['/']);
   }
 }

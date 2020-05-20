@@ -1,0 +1,15 @@
+.nav {
+  padding:.5rem;
+  .icon {
+    &:hover {
+      opacity: .8;
+      cursor: pointer;
+    }
+  }
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}

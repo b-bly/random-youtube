@@ -1,4 +1,9 @@
-<youtube-player 
-  videoId="{{videoId}}" 
-  suggestedQuality="highres">
-</youtube-player>
+<div class="nav">
+  <fa-icon class="icon" [icon]="faArrowLeft" size="2x" (click)="back()"></fa-icon>
+</div>
+<div class="center-container">
+  <youtube-player 
+    videoId="{{videoId}}" 
+    suggestedQuality="highres">
+  </youtube-player>
+</div>
