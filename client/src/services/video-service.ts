@@ -4,8 +4,10 @@ import { Injectable } from '@angular/core';
 Injectable({
   providedIn: 'root'
 })
-export class VideoService {
-  constructor() {}
+export class VideoService  {
+  constructor() {
+    
+  }
 
   getWidth(innerWidth: number, videosPerRow: number = 5) {
     const width =  innerWidth / videosPerRow - 10;

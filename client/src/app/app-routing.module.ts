@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VideoService } from '../services/video-service';
 import { VideoThumbnailContainerComponent } from 'src/components/video-thumbnail-container/video-thumbnail-container.component';
 import { PlayVideoComponent } from '../components/play-video/play-video.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -54,11 +55,11 @@ const routes: Routes = [
         CommonModule,
         BrowserModule,
         FontAwesomeModule,
-        // HttpClientModule,
+        HttpClientModule,
         // FormsModule,
       ],
       providers: [
-        VideoService
+        VideoService,
       ],
       exports: [RouterModule]
     })

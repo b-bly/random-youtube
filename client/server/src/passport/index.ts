@@ -6,7 +6,8 @@ import * as path from 'path';
 
 // Google API clientID, clientSecret, etc. set up at https://console.developers.google.com/
 
-const keyPath = path.join(__dirname, 'oauth2.keys.json');
+const keyPath = path.join(__dirname, '../../oauth2.keys.json');
+console.log(keyPath);
 let googleConfig: any = {redirect_uris: ['']};
 if (fs.existsSync(keyPath)) {
   googleConfig = require(keyPath);
@@ -20,20 +21,20 @@ passport.serializeUser(function(user: any, done: any) {
   done(null, user);
  });
 
- passport.use(
-  new GoogleStrategy(
-   {
-    clientID: googleConfig.clientId,
-    clientSecret: googleConfig.clientSecret,
-    callbackURL: googleConfig.redirect
-   },
-   function(accessToken: any, refreshToken: any, profile: any, done: any) {
-    var userData = {
-     email: profile.emails[0].value,
-     name: profile.displayName,
-     token: accessToken
-    };
-    done(null, userData);
-   }
-  )
- );
+passport.use(
+new GoogleStrategy(
+  {
+  clientID: googleConfig.client_id,
+  clientSecret: googleConfig.client_secret,
+  callbackURL: googleConfig.redirect_url
+  },
+  function(accessToken: any, refreshToken: any, profile: any, done: any) {
+  var userData = {
+    email: profile.emails[0].value,
+    name: profile.displayName,
+    token: accessToken
+  };
+  done(null, userData);
+  }
+)
+);

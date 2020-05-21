@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { createVideoScript } from 'src/util/util';
 import * as queryString from 'query-string';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 // TODO: Add google font
@@ -24,18 +25,21 @@ export class Home implements OnInit {
   videos: any = videos;
   videosPerRow: number = 5;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, 
+    private authService: AuthService
+    ) { }
 
   ngOnInit() {
-    console.log(window.innerWidth);
     createVideoScript();
+    console.log(this.router.url);
+
     var query: any = queryString.parse(this.router.url);
 
     console.log('url parsed: ')
     console.log(query);
     if (query.token) {
       window.localStorage.setItem("jwt", query.token);
-   }
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -43,7 +47,8 @@ export class Home implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
-  signInWithGoogle() {
-    // call /auth/google
+
+  async testApi() {
+    await this.authService.test();
   }
 }

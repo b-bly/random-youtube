@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd ./server && npm start",
+    "server": "cd ./client/server && npm run dev",
     "client": "cd ./client && npm start"
   },
   "repository": {
@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/b-bly/movie-app/issues"
   },
-  "homepage": "https://github.com/b-bly/movie-app#readme"
+  "homepage": "https://github.com/b-bly/movie-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express-session": "^1.17.1"
+  }
 }

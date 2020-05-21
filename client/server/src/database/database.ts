@@ -1,4 +1,4 @@
-import { pool } from '../database/pool';
+import { pool } from './pool';
 import { Pool, QueryResult, PoolClient } from 'pg';
 
 class Database {

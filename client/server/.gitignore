@@ -9,6 +9,9 @@
 # production
 /build
 
+# oauth
+oauth2.keys.json
+
 # misc
 .DS_Store
 .env.local
