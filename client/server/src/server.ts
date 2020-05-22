@@ -2,7 +2,8 @@ import express from "express";
 import bodyParser from 'body-parser';
 import morgan from "morgan";
 var passport = require('passport'); // at header
-const session = require('express-session')
+const session = require('express-session');
+const sessionConfig = require('../express-sessions.config.json');
 
 
 // Routes
@@ -36,9 +37,9 @@ app.use(bodyParser.json());
 // sessions
 app.use(
 	session({
-		secret: 'fraggle rock',
-		resave: false, //required
-		saveUninitialized: false //required
+		secret: sessionConfig.secret || 'secret',
+		resave: sessionConfig.resave || false, //required
+		saveUninitialized: sessionConfig.saveUninitialized || false //required
 	})
 )
 
@@ -50,6 +51,15 @@ app.get('/api', (req, res) => {
   console.log('hello')
   res.json({message: 'bubbles'})
 });
+
+app.post('/api', (req, res) => {
+  console.log(req.body);
+  const resume = JSON.stringify(req.body);
+
+  console.log(resume);
+  console.log(resume.length)
+  res.sendStatus(200);
+})
 
 // routing
 

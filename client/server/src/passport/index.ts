@@ -7,7 +7,6 @@ import * as path from 'path';
 // Google API clientID, clientSecret, etc. set up at https://console.developers.google.com/
 
 const keyPath = path.join(__dirname, '../../oauth2.keys.json');
-console.log(keyPath);
 let googleConfig: any = {redirect_uris: ['']};
 if (fs.existsSync(keyPath)) {
   googleConfig = require(keyPath);

@@ -12,6 +12,9 @@
 # oauth
 oauth2.keys.json
 
+#config
+express-sessions.config.json
+
 # misc
 .DS_Store
 .env.local
