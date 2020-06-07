@@ -1,46 +1,37 @@
 import { Router, Response, Request } from 'express';
 import { getMovies } from '../database/controller';
 import path from 'path';
-import { config } from 'process';
 import * as fs from 'fs';
-export const router = Router();
-const {google} = require('googleapis');
-// const OAuth2 = google.auth.OAuth2;
-const googleConfig = require('../../oauth2.keys.json');
+const router = Router();
+const config = require('../config'),
+    { google } = require('googleapis'),
+    OAuth2 = google.auth.OAuth2;
 
-function userLogged(req: any, res: Response, next: any) {
-  if (req.isAuthenticated())
-      return next();
-  res.sendStatus(401)
-}
 
-router.get('/', userLogged, async (req: any, res: Response) => {
 
-  if (req.user && req.user.access_token) {
+router.get('/', userLogged, async (req: any, res: any) => {
 
-  
-
-  // TODO: move to 3rd.party
-
-    var oauth2Client = new google.auth.OAuth2(
-        googleConfig.clientID,
-        googleConfig.clientSecret,
-        googleConfig.callbackURL
+    var oauth2Client = new OAuth2(
+        config.clientID,
+        config.clientSecret,
+        config.callbackURL
     );
 
     oauth2Client.credentials = {
-        access_token: req.user.access_token,
-        refresh_token: req.user.refresh_token
+        access_token: req.user.access_token
+        // refresh_token: req.user.refresh_token
     };
 
-    google.youtube({
+    // playlists
+
+    await google.youtube({
         version: 'v3',
         auth: oauth2Client
-    }).subscriptions.list({
+    }).playlists.list({
         part: 'snippet',
         mine: true,
         headers: {}
-    }, function(err: Error, data: any, response: Response) {
+    }, async (err: Error, data: any, response: any) => {
         if (err) {
             console.error('Error: ' + err);
             res.json({
@@ -48,26 +39,53 @@ router.get('/', userLogged, async (req: any, res: Response) => {
             });
         }
         if (data) {
-            console.log(data);
-            res.json({
-                status: "ok",
-                data: data
-            });
-        }
-        if (response) {
-            console.log('Status code: ' + response.statusCode);
+
+            const id = data.data.items[0].id;
+
+            // first playlist
+
+            await google.youtube({
+                version: 'v3',
+                auth: oauth2Client
+            }).playlistItems.list({
+                playlistId: id,
+                part: 'snippet',
+                mine: true,
+                headers: {}
+            }, function (err: Error, data: any, response: any) {
+                if (err) {
+                    console.error('Error: ' + err);
+                    res.json({
+                        status: "error"
+                    });
+                }
+                if (data) {
+
+                    res.json({
+                        status: "ok",
+                        data: data
+                    });
+                }
+                if (response) {
+                    console.log('Status code: ' + response.statusCode);
+                }
+
+            })
         }
     });
-  } else {
-    res.redirect('/api/auth/google');
-  }
-
-  // const data = await getMovies();
-  // res.json(data);
 });
+
+function userLogged(req: any, res: any, next: any) {
+    if (req.isAuthenticated())
+        return next();
+    res.json({ loggedIn: false });
+}
+
 
 // LESSON LEARNED
 // if module.exports is used to return the router, there is a type error 
 // at app.use in server.ts
 
 // module.exports = <Router>router;
+
+export const movies = router;

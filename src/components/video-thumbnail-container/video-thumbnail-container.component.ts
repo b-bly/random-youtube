@@ -26,8 +26,8 @@ export class VideoThumbnailContainerComponent implements OnInit {
     return this.videoService.getHeight(this.innerWidth, this.videosPerRow);
   }
 
-  getThumbnailUrl(videoId) {
-    return this.videoService.getThumbnailUrl(videoId);
+  getThumbnailUrl(video) {
+    return this.videoService.getThumbnailUrl(video.snippet.resourceId.videoId);
   }
 }
 

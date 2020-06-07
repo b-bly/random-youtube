@@ -4,8 +4,6 @@ const GoogleStrategy = googleOauth.OAuth2Strategy;
 import { config } from '../app.config';
 const googleConfig = config.google;
 
-console.log(config);
-
 passport.serializeUser((user: any, done: any) => {
   done(null, user);
  });
@@ -21,7 +19,7 @@ passport.use(
       clientSecret: googleConfig.client_secret,
       callbackURL: googleConfig.redirect_url
     },
-    function(accessToken: string, refreshToken: string, profile: any, done: any) {
+    (accessToken: string, refreshToken: string, profile: any, done: any) => {
       var userData = {
         email: profile.emails[0].value,
         name: profile.displayName,

@@ -41,4 +41,8 @@ export class AuthService extends DataService {
       }
     }
   }
+
+  getUser<T>() {
+    return <Promise<T>>this.http.get('/api/auth/user').toPromise();
+  }
 }

@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { Home } from '../components/home.component';
 import { HomeLayout } from '../layouts/home.layout.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-import { Video } from '../components/video/video.component';
-import { VideoContainerComponent } from '../components/video-container/video-container.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { VideoThumbnailComponent } from '../components/video-thumbnail/video-thumbnail.component';
@@ -13,9 +11,20 @@ import { VideoService } from '../services/video-service';
 import { VideoThumbnailContainerComponent } from 'src/components/video-thumbnail-container/video-thumbnail-container.component';
 import { PlayVideoComponent } from '../components/play-video/play-video.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from '../components/login/login.component';
 
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: HomeLayout,
+    children: [
+      {
+        path: '', component: LoginComponent,
+      }
+
+    ]
+  },
   {
     path: '',
     component: HomeLayout,
@@ -29,23 +38,13 @@ const routes: Routes = [
 
     ]
   },
-  // {
-  //   path: 'video/:id',
-  //   component: HomeLayout,
-  //   children: [
-  //     {
-  //       path: '', component: PlayVideoComponent,
-  //     },
-  //   ]
-  // }
+ 
 ];
 
 @NgModule({
       declarations: [
         HomeLayout,
         Home,
-        Video,
-        VideoContainerComponent,
         VideoThumbnailComponent,
         VideoThumbnailContainerComponent,
         PlayVideoComponent

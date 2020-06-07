@@ -3,20 +3,17 @@ import bodyParser from 'body-parser';
 import morgan from "morgan";
 import { passport } from './passport'
 const session = require('express-session');
-const sessionConfig = require('../express-sessions.config.json');
-
+import { config } from './app.config';
 
 // Routes
 
-import { router as movies } from './routes/movies';
-import { router as google } from './routes/auth/google'
-const cors = require('cors')
+import { movies } from './routes/movies';
+import { googleOauth } from './routes/auth/google-oauth';
+import { user } from './routes/auth/user';
  
 
 const app = express()
 const PORT = 8080
-
-app.use(cors({allowedHeaders: ['Content-Type', 'Authorization']}));
 
 // https://github.com/auth0/passport-linkedin-oauth2/issues/43
 
@@ -37,14 +34,14 @@ app.use(bodyParser.json());
 // sessions
 app.use(
 	session({
-		secret: sessionConfig.secret || 'secret',
-		resave: sessionConfig.resave || false, //required
-		saveUninitialized: sessionConfig.saveUninitialized || false //required
+		secret: config.session.secret || 'secret',
+		resave: config.session.resave || false, //required
+		saveUninitialized: config.session.saveUninitialized || false //required
 	})
 )
 
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 
 // log session 
@@ -63,7 +60,8 @@ app.get('/api', (req, res) => {
 // routing
 
 app.use('/api/movies', movies);
-app.use('/api/auth/google', google)
+app.use('/api/auth/google', googleOauth);
+app.use('/api/auth/user', user)
 
 // Starting Server
 app.listen(PORT, () => {

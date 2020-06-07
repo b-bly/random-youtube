@@ -8,13 +8,15 @@ import { VideoService } from '../services/video-service';
 
 // TODO: Add google font
 
-const videos: any = [
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'},
-  {id: 'Ygo5VcMGMCs'}
-];
+// for testing
+
+// const videos: any = [
+//   {id: 'Ygo5VcMGMCs'},
+//   {id: 'Ygo5VcMGMCs'},
+//   {id: 'Ygo5VcMGMCs'},
+//   {id: 'Ygo5VcMGMCs'},
+//   {id: 'Ygo5VcMGMCs'}
+// ];
 
 @Component({
   selector: 'home',
@@ -23,28 +25,18 @@ const videos: any = [
 })
 export class Home implements OnInit {
   innerWidth: number = window.innerWidth || 100;
-  videos: any = videos;
+  videos: any;
   videosPerRow: number = 5;
+  user: any;
 
   constructor(private router: Router, 
     private authService: AuthService,
-    // private videoService: VideoService
     ) { }
 
   async ngOnInit() {
     createVideoScript();
-    const response = await this.authService.getMovies();
-    console.log(response);
-    
-    await this.testApi();
-
-    var query: any = queryString.parse(this.router.url);
-
-    console.log('url parsed: ')
-    console.log(query);
-    if (query.token) {
-      window.localStorage.setItem("jwt", query.token);
-    }
+    await this.getUser();
+    await this.getMovies();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -52,6 +44,20 @@ export class Home implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
+  async getUser() {
+    this.user = await this.authService.getUser();
+    if (this.user.loggedIn == false) {
+      this.router.navigate(['/login'])
+    }
+  }
+
+  async getMovies() {
+    if (this.user.loggedIn == true) {
+      const movies: any = await this.authService.getMovies();
+      // data.data.items[0].snippet.resourceId.videoId
+      this.videos = movies.data.data.items.slice(0,5);
+    }
+  }
 
   async testApi() {
     await this.authService.test();
