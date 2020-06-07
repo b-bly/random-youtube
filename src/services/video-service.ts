@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DataService } from './data.service';
 
 
-Injectable({
+Injectable(
+  {
   providedIn: 'root'
-})
-export class VideoService  {
-  constructor() {
-    
+}
+)
+export class VideoService {
+  constructor(
+    // protected http: HttpClient
+    ) {
+    // super(http);
   }
 
   getWidth(innerWidth: number, videosPerRow: number = 5) {

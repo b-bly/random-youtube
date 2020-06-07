@@ -1,0 +1,10 @@
+{
+  "development": {
+    "sessionSecret": "cake-pie-pasta-coffee-egoliant-9938%%$",
+    "google": {
+      "client_id": "287072051821-k4ej1eogu4jjc2ji5sr3blcus4s6c2p9.apps.googleusercontent.com",
+      "client_secret": "X4T24KhD24wt9EwOlb6supvD",
+      "redirect_url": "http://localhost:4200/auth/google/callback"
+    }
+  }
+}

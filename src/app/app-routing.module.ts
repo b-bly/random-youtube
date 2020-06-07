@@ -42,6 +42,7 @@ const routes: Routes = [
 
 @NgModule({
       declarations: [
+        HomeLayout,
         Home,
         Video,
         VideoContainerComponent,
@@ -51,15 +52,16 @@ const routes: Routes = [
       ],
       imports: [
         RouterModule.forRoot(routes),
-        YouTubePlayerModule,
-        CommonModule,
         BrowserModule,
-        FontAwesomeModule,
         HttpClientModule,
+        CommonModule,
+
+        YouTubePlayerModule,
+        FontAwesomeModule,
         // FormsModule,
       ],
       providers: [
-        VideoService,
+        VideoService
       ],
       exports: [RouterModule]
     })

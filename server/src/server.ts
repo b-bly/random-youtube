@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import morgan from "morgan";
-var passport = require('passport'); // at header
+import { passport } from './passport'
 const session = require('express-session');
 const sessionConfig = require('../express-sessions.config.json');
 
@@ -44,22 +44,21 @@ app.use(
 )
 
 app.use(passport.initialize());
-require("./passport");
+// app.use(passport.session());
+
+
+// log session 
+
+// app.use( (req: any, res: any, next: any) => {
+//   console.log('req.session', req.session);
+//   return next();
+// });
 
 // testing
 app.get('/api', (req, res) => {
   console.log('hello')
   res.json({message: 'bubbles'})
 });
-
-app.post('/api', (req, res) => {
-  console.log(req.body);
-  const resume = JSON.stringify(req.body);
-
-  console.log(resume);
-  console.log(resume.length)
-  res.sendStatus(200);
-})
 
 // routing
 
