@@ -1,9 +1,8 @@
-const passport = require('passport');
 const express = require('express');
 const router = express.Router();
-const config = require('../../app.config'),
-  {google} = require('googleapis'),
-  OAuth2 = google.auth.OAuth2;
+import { google } from 'googleapis';
+// const google = require('googleapis'),
+const OAuth2 = google.auth.OAuth2;
 
 /* GET Google Authentication API. */
 router.get(

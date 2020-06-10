@@ -1,5 +1,5 @@
 const passport = require('passport');
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 const router = Router();
 
 /* GET Google Authentication API. */

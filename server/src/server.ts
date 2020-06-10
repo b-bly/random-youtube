@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from "morgan";
 import { passport } from './passport'
 const session = require('express-session');
+// import * as session from 'express-session';
 import { config } from './app.config';
 
 // Routes
@@ -17,7 +18,7 @@ const PORT = 8080
 
 // https://github.com/auth0/passport-linkedin-oauth2/issues/43
 
-app.all('/*', function(req, res, next) {
+app.all('/*', (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });

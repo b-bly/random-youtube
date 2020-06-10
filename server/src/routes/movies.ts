@@ -1,9 +1,9 @@
-import { Router, Response, Request } from 'express';
-import { getVideos, getPlaylists } from '../3rd-party/controllers/google';
+import { Router } from 'express';
+import { getVideos } from '../3rd-party/controllers/google';
 const router = Router();
-const config = require('../config'),
-    { google } = require('googleapis'),
-    OAuth2 = google.auth.OAuth2;
+import { config } from '../app.config';
+import { google } from 'googleapis';
+const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
     config.clientID,
     config.clientSecret,

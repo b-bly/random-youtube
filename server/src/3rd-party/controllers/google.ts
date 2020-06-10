@@ -1,8 +1,4 @@
-import { rejects } from "assert";
-import { resolve } from "dns";
-
 const { google } = require('googleapis');
-const OAuth2 = google.auth.OAuth2;
 
 export const getPlaylists = async (oauth2Client: any) => {
   return await new Promise((resolve, reject) => {

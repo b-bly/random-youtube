@@ -8,7 +8,7 @@ passport.serializeUser((user: any, done: any) => {
   done(null, user);
  });
 
- passport.deserializeUser(function(user: any, done: any) {
+ passport.deserializeUser((user: any, done: any) => {
   done(null, user);
  });
 

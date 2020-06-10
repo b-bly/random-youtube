@@ -17,7 +17,7 @@
       "preLaunchTask": "npm: build",
       "sourceMaps": true,
       "smartStep": true,
-      "outFiles": ["${workspaceFolder}/dist/*.js"],
+      "outFiles": ["${workspaceFolder}/dist/server.js"],
     //   "args": [
     //     "--watch src -e ts,ejs" ,
     //     "--exec npm run dev:start"

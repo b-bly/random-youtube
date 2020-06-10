@@ -1,8 +1,8 @@
-import { pool } from './pool';
+import { pool as thePool } from './pool';
 import { Pool, QueryResult, PoolClient } from 'pg';
 
 class Database {
-  constructor(private pool: Pool = pool) { }
+  constructor(private pool: Pool = thePool) { }
 
   async getDBClient() {
     let client: PoolClient;
@@ -32,4 +32,4 @@ class Database {
   }
 }
 
-export const database = new Database(pool);
+export const database = new Database(thePool);
