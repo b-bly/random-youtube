@@ -10,7 +10,7 @@ import { config } from './app.config';
 import { movies } from './routes/movies';
 import { googleOauth } from './routes/auth/google-oauth';
 import { user } from './routes/auth/user';
- 
+
 
 const app = express()
 const PORT = 8080
@@ -35,8 +35,8 @@ app.use(bodyParser.json());
 app.use(
 	session({
 		secret: config.session.secret || 'secret',
-		resave: config.session.resave || false, //required
-		saveUninitialized: config.session.saveUninitialized || false //required
+		resave: config.session.resave || false, // required
+		saveUninitialized: config.session.saveUninitialized || false // required
 	})
 )
 
@@ -44,7 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// log session 
+// log session
 
 // app.use( (req: any, res: any, next: any) => {
 //   console.log('req.session', req.session);

@@ -55,7 +55,10 @@ export class Home implements OnInit {
     if (this.user.loggedIn == true) {
       const movies: any = await this.authService.getMovies();
       // data.data.items[0].snippet.resourceId.videoId
-      this.videos = movies.data.data.items.slice(0,5);
+      console.log(movies);
+      if (movies.status === 'ok') {
+        this.videos = movies.data.slice(0,5);
+      }
     }
   }
 

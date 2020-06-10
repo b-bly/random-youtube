@@ -20,7 +20,7 @@ passport.use(
       callbackURL: googleConfig.redirect_url
     },
     (accessToken: string, refreshToken: string, profile: any, done: any) => {
-      var userData = {
+      const userData = {
         email: profile.emails[0].value,
         name: profile.displayName,
         _id: profile.id,

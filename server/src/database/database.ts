@@ -12,14 +12,14 @@ class Database {
     } catch (err) {
       console.log(err);
       return err;
-    } 
+    }
   }
 
   async query(query: string, values?: [any]): Promise<QueryResult<any>> {
     const client = await this.getDBClient();
     try {
       if (values) {
-        return await client.query(query, values);  
+        return await client.query(query, values);
       } else {
         return await client.query(query);
       }
