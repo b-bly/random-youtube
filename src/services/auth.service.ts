@@ -17,16 +17,18 @@ export class AuthService extends DataService {
 
   async getMovies<T>() {
     try {
-      let params: any = {};
-      const jwt = window.localStorage.getItem("jwt");
-      if (jwt) {
-        params = {
-          headers: new HttpHeaders()
-        };
-        params.headers.append('Content-Type', 'application/json; charset=utf-8');
-        params.headers.append(`Authorization`, `Bearer ${jwt}`);
-      }
-      const res = <Promise<T>>this.http.get('api/movies', {params}).toPromise();
+      // let params: any = {};
+      // const jwt = window.localStorage.getItem("jwt");
+      // if (jwt) {
+      //   params = {
+      //     headers: new HttpHeaders()
+      //   };
+      //   params.headers.append('Content-Type', 'application/json; charset=utf-8');
+      //   params.headers.append(`Authorization`, `Bearer ${jwt}`);
+      // }
+      // const res = <Promise<T>>this.http.get('api/movies', {params}).toPromise();
+      const res = <Promise<T>>this.http.get('api/movies').toPromise();
+
       return res;
 
       
@@ -44,5 +46,9 @@ export class AuthService extends DataService {
 
   getUser<T>() {
     return <Promise<T>>this.http.get('/api/auth/user').toPromise();
+  }
+
+  logout<T>() {
+    return <Promise<T>>this.http.get('api/auth/user/logout').toPromise();
   }
 }

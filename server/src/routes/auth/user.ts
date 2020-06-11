@@ -19,4 +19,12 @@ router.get(
   }
 );
 
+router.post(
+  'logout',
+  (req: any, res: any) => {
+    req.logout();
+    res.sendStatus(200);
+  }
+)
+
 export const user = router;
