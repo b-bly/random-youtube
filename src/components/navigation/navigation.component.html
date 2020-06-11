@@ -1,0 +1,13 @@
+<nav>
+  <div class="nav-item dropdown" [ngClass]="{'open' : dropdownIsOpen}" (click)="toggleDropdown()">
+    
+    <a class="dropbtn"><i class="fa fa-bars"></i></a>
+    <div class="dropdown-content">
+      <!-- <div>Login</div> -->
+      <div class="dropdown-item" (click)="logout()">Log out</div>
+    </div>
+  </div>
+  <div class="nav-item ">
+
+  </div>
+</nav>

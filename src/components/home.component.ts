@@ -57,7 +57,9 @@ export class Home implements OnInit {
       // data.data.items[0].snippet.resourceId.videoId
       console.log(movies);
       if (movies.status === 'ok') {
-        this.videos = movies.data.slice(0,5);
+        this.videos = movies.data;
+      } else {
+        this.router.navigate(['/login'])
       }
     }
   }

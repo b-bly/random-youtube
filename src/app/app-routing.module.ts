@@ -6,12 +6,12 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { VideoThumbnailComponent } from '../components/video-thumbnail/video-thumbnail.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VideoService } from '../services/video-service';
 import { VideoThumbnailContainerComponent } from 'src/components/video-thumbnail-container/video-thumbnail-container.component';
 import { PlayVideoComponent } from '../components/play-video/play-video.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from '../components/login/login.component';
+import { NavigationComponent } from '../components/navigation/navigation.component';
 
 
 const routes: Routes = [
@@ -47,7 +47,9 @@ const routes: Routes = [
         Home,
         VideoThumbnailComponent,
         VideoThumbnailContainerComponent,
-        PlayVideoComponent
+        PlayVideoComponent,
+        LoginComponent,
+        NavigationComponent
       ],
       imports: [
         RouterModule.forRoot(routes),
@@ -56,7 +58,6 @@ const routes: Routes = [
         CommonModule,
 
         YouTubePlayerModule,
-        FontAwesomeModule,
         // FormsModule,
       ],
       providers: [
