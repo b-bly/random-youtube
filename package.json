@@ -3,12 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json --watch --open",
+    "start": "cd server && npm start",
+    "dev": "ng serve --proxy-config proxy.conf.json --watch --open",
     "server": "cd ./server && npm run dev",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build ——prod"
+  },
+  "engines": {
+    "node": "10.20.1"
   },
   "repository": {
     "type": "git",

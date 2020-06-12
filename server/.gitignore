@@ -14,6 +14,7 @@ oauth2.keys.json
 
 #config
 express-sessions.config.json
+config.json
 
 # misc
 .DS_Store

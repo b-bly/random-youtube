@@ -4,6 +4,7 @@ import morgan from "morgan";
 import { passport } from './passport'
 const session = require('express-session');
 // import * as session from 'express-session';
+import * as path  from 'path';
 import { config } from './app.config';
 
 // Routes
@@ -13,8 +14,8 @@ import { googleOauth } from './routes/auth/google-oauth';
 import { user } from './routes/auth/user';
 
 
-const app = express()
-const PORT = 8080
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 // https://github.com/auth0/passport-linkedin-oauth2/issues/43
 
@@ -51,6 +52,17 @@ app.use(passport.session());
 //   console.log('req.session', req.session);
 //   return next();
 // });
+
+
+// ==== if its production environment!
+if (process.env.NODE_ENV === 'production') {
+	console.log('*** production environment ***');
+	app.use('/static', express.static(path.join(__dirname, '../dist/movie-app')))
+	app.get('/', (req, res) => {
+		res.sendFile(path.join(__dirname, '../dist/movie-app'))
+	})
+}
+
 
 // testing
 app.get('/api', (req, res) => {
