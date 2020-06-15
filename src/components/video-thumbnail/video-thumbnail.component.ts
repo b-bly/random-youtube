@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,7 +11,6 @@ export class VideoThumbnailComponent implements OnInit {
   @Input() height: number;
   @Input() width: number;
   @Input() thumbnailUrl: string;
-  faPlay = faPlay;
   
   constructor() { }
 

@@ -6,6 +6,13 @@ const session = require('express-session');
 // import * as session from 'express-session';
 import * as path  from 'path';
 import { config } from './app.config';
+const clientPath = '../../dist/movie-app/';
+
+// for dev environment variables
+
+// const dotenv = require("dotenv").config();
+// if (dotenv.error) { console.log(dotenv.error); }
+// console.log(process.env.NODE_ENV)
 
 // Routes
 
@@ -19,10 +26,10 @@ const PORT = process.env.PORT || 8080;
 
 // https://github.com/auth0/passport-linkedin-oauth2/issues/43
 
-app.all('/*', (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.all('/*', (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 // MIDDLEWARE
 app.use(morgan('dev'))
@@ -53,28 +60,46 @@ app.use(passport.session());
 //   return next();
 // });
 
-
-// ==== if its production environment!
-if (process.env.NODE_ENV === 'production') {
-	console.log('*** production environment ***');
-	app.use('/static', express.static(path.join(__dirname, '../dist/movie-app')))
-	app.get('/', (req, res) => {
-		res.sendFile(path.join(__dirname, '../dist/movie-app'))
-	})
-}
-
-
-// testing
-app.get('/api', (req, res) => {
-  console.log('hello')
-  res.json({message: 'bubbles'})
-});
-
 // routing
 
 app.use('/api/movies', movies);
 app.use('/api/auth/google', googleOauth);
-app.use('/api/auth/user', user)
+app.use('/api/auth/user', user);
+
+const allowedExt = [
+  '.js',
+  '.ico',
+  '.css',
+  '.png',
+  '.jpg',
+  '.woff2',
+  '.woff',
+  '.ttf',
+  '.svg',
+];
+
+if (process.env.NODE_ENV === 'production') {
+	console.log('*** production environment ***');
+	app.use('/static', express.static(path.join(__dirname, clientPath + 'index.html')));
+	app.get('*', (req, res) => {
+			console.log('get /');
+			console.log(__dirname)
+			console.log(path.join(__dirname, clientPath));
+
+			// res.sendFile(path.join(__dirname, clientPath));
+
+			if (allowedExt.filter(ext => req.url.indexOf(ext) > 0).length > 0) {
+				req.url = req.url.replace(/\?.*/g, '');
+
+				console.log(path.resolve(__dirname, `${clientPath}${req.url}`))
+				res.sendFile(path.resolve(__dirname, `${clientPath}${req.url}`));
+			} else {
+				console.log(path.resolve(__dirname, `${clientPath}index.html`));
+				res.sendFile(path.resolve(__dirname, `${clientPath}index.html`));
+			}
+	});
+	app.use('/', express.static(path.join(__dirname, clientPath)));
+}
 
 // Starting Server
 app.listen(PORT, () => {

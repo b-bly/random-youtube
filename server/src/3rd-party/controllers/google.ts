@@ -74,7 +74,7 @@ export const getVideos = async (oauth2Client: any) => {
 
 function getRandomElementsFromArray(array: any[], numberOfSelections: number) {
   if (numberOfSelections > array.length) { return array; }
-  let selectionindecies: number[] = [];
+  const selectionindecies: number[] = [];
   const selections: any[] = [];
   for (let i = 0; i < numberOfSelections; i++) {
     let random = Math.floor(Math.random() * array.length);

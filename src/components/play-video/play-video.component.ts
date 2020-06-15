@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { createVideoScript } from 'src/util/util';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-play-video',
@@ -12,7 +11,6 @@ export class PlayVideoComponent implements OnInit {
   videoId: string;
   height: string;
   width: string;
-  faArrowLeft = faArrowLeft;
 
   constructor(  private route: ActivatedRoute,
     private router: Router

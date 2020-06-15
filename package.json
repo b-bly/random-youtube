@@ -6,11 +6,11 @@
     "start": "cd server && npm start",
     "dev": "ng serve --proxy-config proxy.conf.json --watch --open",
     "server": "cd ./server && npm run dev",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build ——prod"
+    "heroku-postbuild": "ng build --prod && cd server && npm install && npm run build"
   },
   "engines": {
     "node": "10.20.1"
