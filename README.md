@@ -4,8 +4,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setup
 
-Make a config.ts file in the ./server directory similar to config.example.ts and put in values.
 Make a .env file in the ./server directory similar to .env.example and put in values.
+Go to https://console.developers.google.com/
+Click edit for Oauth 2.0 Client Ids
+And enter authorized javascript origins
+For dev, mine was: 
+http://localhost:4200
+For prod, put in the deployed url.  Mine was 
+https://random-youtube.herokuapp.com
+and authorized redirect uris. 
+dev: 
+http://localhost:4200/api/auth/google/callback
+prod: 
+https://random-youtube.herokuapp.com/api/auth/google/callback
 
 ## Development server
 
