@@ -2,7 +2,6 @@
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require("dotenv").config();
 	if (dotenv.error) { console.log(dotenv.error); }
-	console.log(process.env.NODE_ENV)
 }
 import express from "express";
 import bodyParser from 'body-parser';
