@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-prebuild": "cd server && npm install",
+    "heroku-prebuild": "cd server && npm install --only=dev && npm install",
     "heroku-postbuild": "ng build --prod && cd server && npm install && npm run build"
   },
   "engines": {
