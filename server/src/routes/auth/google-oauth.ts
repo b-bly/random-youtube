@@ -1,6 +1,7 @@
 const passport = require('passport');
 import { Router } from 'express';
 const router = Router();
+import { config } from '../../app.config';
 
 /* GET Google Authentication API. */
 router.get(
@@ -12,8 +13,9 @@ router.get(
   "/callback",
   passport.authenticate("google", { failureRedirect: "/api/auth/google", session: true }),
   (req: any, res: any) => {
-
-    res.redirect("http://localhost:4200?token=" + req.user.access_token);
+    const url = `${config.client}?token=${req.user.access_token}`;
+    console.log(url);
+    res.redirect(url);
 
     // express sessions will attach session id to response automatically, so no need to attach the token
     // as a jwt on client side

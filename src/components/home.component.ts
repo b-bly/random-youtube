@@ -55,7 +55,6 @@ export class Home implements OnInit {
     if (this.user.loggedIn == true) {
       const movies: any = await this.authService.getMovies();
       // data.data.items[0].snippet.resourceId.videoId
-      console.log(movies);
       if (movies.status === 'ok') {
         this.videos = movies.data;
       } else {
