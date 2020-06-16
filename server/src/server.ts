@@ -1,3 +1,9 @@
+// for dev environment variables
+if (process.env.NODE_ENV !== 'production') {
+	const dotenv = require("dotenv").config();
+	if (dotenv.error) { console.log(dotenv.error); }
+	console.log(process.env.NODE_ENV)
+}
 import express from "express";
 import bodyParser from 'body-parser';
 import morgan from "morgan";
@@ -8,11 +14,7 @@ import * as path  from 'path';
 import { config } from './app.config';
 const clientPath = '../../dist/movie-app/';
 
-// for dev environment variables
 
-// const dotenv = require("dotenv").config();
-// if (dotenv.error) { console.log(dotenv.error); }
-// console.log(process.env.NODE_ENV)
 
 // Routes
 
@@ -43,7 +45,7 @@ app.use(bodyParser.json());
 // sessions
 app.use(
 	session({
-		secret: config.session.secret || 'secret',
+		secret: config.session.sessionSecret || 'secret',
 		resave: config.session.resave || false, // required
 		saveUninitialized: config.session.saveUninitialized || false // required
 	})

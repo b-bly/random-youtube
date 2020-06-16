@@ -5,9 +5,9 @@ import { config } from '../app.config';
 import { google } from 'googleapis';
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
-    config.clientID,
-    config.clientSecret,
-    config.callbackURL
+    config.google.client_id,
+    config.google.client_secret,
+    config.google.redirect_url
 );
 
 
