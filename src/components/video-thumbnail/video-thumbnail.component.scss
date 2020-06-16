@@ -4,15 +4,16 @@
   justify-content: center;
   padding-top: .5rem;
 
-  fa-icon {
+  .fa {
     position: absolute;
     visibility: hidden;
+    color: white;
   }
   
   &:hover {
-    fa-icon {
+    .fa {
       visibility: visible;
-      opacity:.5;
+      opacity:.8;
       z-index: 2;
     }
     img {
