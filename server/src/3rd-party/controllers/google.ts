@@ -49,18 +49,12 @@ export const getVideos = async (oauth2Client: any) => {
     let playlists: any;
     try {
       playlists = await getPlaylists(oauth2Client);
-      // TODO: replace slice with random selection
       if (playlists) {
         let videoArray: any[];
         try {
-          // const shortPlaylist = playlists.data.items.slice(10);
-          // const randomPlaylists: any[] = playlists.data.items.length > 15 ? getRandomElementsFromArray(playlists.data.items, 15): playlists.data.items;
-          // console.log('random playlists length')
-          // console.log(randomPlaylists.length);
           videoArray = await Promise.all(playlists.data.items.map( (item: any) =>  getVideosFromPlaylistId(oauth2Client, item.id)));
           videoArray = videoArray.reduce((accumulator, value) => accumulator.concat(value), []);
           const videoArrayRandomSelection = videoArray.length > 50 ? getRandomElementsFromArray(videoArray, 50) : videoArray;
-          // console.log(videoArray.length)
           resolve(videoArrayRandomSelection);
         } catch (err) {
           reject(err);
@@ -73,22 +67,6 @@ export const getVideos = async (oauth2Client: any) => {
 }
 
 function getRandomElementsFromArray(array: any[], numberOfSelections: number) {
-  if (numberOfSelections > array.length) { return array; }
-  const selectionindecies: number[] = [];
-  const selections: any[] = [];
-  for (let i = 0; i < numberOfSelections; i++) {
-    let random = Math.floor(Math.random() * array.length);
-    while (selectionindecies.includes(random)) {
-      random = Math.floor(Math.random() * array.length);
-    }
-    selectionindecies.push(random);
-  }
-  selectionindecies.forEach((_, val: number) => {
-    selections.push(array[val]);
-  });
-  return shuffle(selections);
-}
-
-function shuffle(array: any[]) {
-  return array.sort(() => Math.random() - 0.5);
+  array = array.sort(() => Math.random() - 0.5);
+  return array.slice(0, numberOfSelections);
 }

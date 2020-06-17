@@ -28,6 +28,7 @@ export class Home implements OnInit {
   videos: any;
   videosPerRow: number = 5;
   user: any;
+  loading: boolean = true;
 
   constructor(private router: Router, 
     private authService: AuthService,
@@ -53,17 +54,15 @@ export class Home implements OnInit {
 
   async getMovies() {
     if (this.user.loggedIn == true) {
+      this.loading = true;
       const movies: any = await this.authService.getMovies();
-      // data.data.items[0].snippet.resourceId.videoId
+      this.loading = false;
+      // movies.data.items[0].snippet.resourceId.videoId
       if (movies.status === 'ok') {
         this.videos = movies.data;
       } else {
         this.router.navigate(['/login'])
       }
     }
-  }
-
-  async testApi() {
-    await this.authService.test();
   }
 }

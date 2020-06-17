@@ -14,7 +14,6 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/api/auth/google", session: true }),
   (req: any, res: any) => {
     const url = `${config.client}?token=${req.user.access_token}`;
-    console.log(url);
     res.redirect(url);
 
     // express sessions will attach session id to response automatically, so no need to attach the token

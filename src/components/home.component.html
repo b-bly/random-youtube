@@ -1,7 +1,10 @@
-<div>
-    <video-thumbnail-container 
+  <div class='overlay' *ngIf="loading === true">
+    <div class='overlay-content'>
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+    <video-thumbnail-container *ngIf="loading === false"
     [innerWidth]=innerWidth
     [videosPerRow]=videosPerRow
     [videos]=videos>
   </video-thumbnail-container>
-</div>
