@@ -11,10 +11,14 @@ nav {
     flex: 1;
     border-radius: .25rem;
     cursor: pointer;
+  }
 
-    .title {
-      text-align: center;
-    }
+  .user {
+    text-align: right;
+  }
+
+  .title {
+    text-align: center;
   }
 
   .dropdown i:hover {

@@ -15,37 +15,12 @@ export class AuthService extends DataService {
     return await this.get('/api');
   }
 
-  async getMovies<T>() {
-    try {
-      // let params: any = {};
-      // const jwt = window.localStorage.getItem("jwt");
-      // if (jwt) {
-      //   params = {
-      //     headers: new HttpHeaders()
-      //   };
-      //   params.headers.append('Content-Type', 'application/json; charset=utf-8');
-      //   params.headers.append(`Authorization`, `Bearer ${jwt}`);
-      // }
-      // const res = <Promise<T>>this.http.get('api/movies', {params}).toPromise();
-      const res = <Promise<T>>this.http.get('api/movies').toPromise();
-
-      return res;
-
-      
-      // return await this.get('/api/movies');
-    } catch (e) {
-      if (e.status == 401) {
-        return {
-          status: 401
-        }
-      } else {
-        throw e;
-      }
-    }
+  getMovies<T>() {
+    return this.get('api/movies');
   }
 
   getUser<T>() {
-    return <Promise<T>>this.http.get('/api/auth/user').toPromise();
+    return this.get('api/auth/user'); 
   }
 
   logout<T>() {

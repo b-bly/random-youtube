@@ -16,12 +16,13 @@ export class VideoService {
   }
 
   getWidth(innerWidth: number, videosPerRow: number = 5) {
-    const width =  innerWidth / videosPerRow - 10;
+    let width: number =  innerWidth / videosPerRow - 10;
+    if (width > 150) { width = 150; }
     return width;
   }
 
   getHeight(innerWidth: number, videosPerRow: number = 5) {
-    const height = ((this.getWidth(innerWidth, videosPerRow) / 16) * 9);
+    const height: number = ((this.getWidth(innerWidth, videosPerRow) / 16) * 9);
     return height;
   }
 

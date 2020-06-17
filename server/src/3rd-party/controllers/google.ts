@@ -86,5 +86,9 @@ function getRandomElementsFromArray(array: any[], numberOfSelections: number) {
   selectionindecies.forEach((_, val: number) => {
     selections.push(array[val]);
   });
-  return selections;
+  return shuffle(selections);
+}
+
+function shuffle(array: any[]) {
+  return array.sort(() => Math.random() - 0.5);
 }

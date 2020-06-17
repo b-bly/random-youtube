@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -9,20 +9,25 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   dropdownIsOpen = false;
+  user: any = {loggedIn: null, name: null};
 
   constructor(private authService: AuthService,
     private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.user = await this.getUser();
   }
   
   toggleDropdown() {
     this.dropdownIsOpen = !this.dropdownIsOpen;
   }
 
-  logout() {
-    this.authService.logout();
-    // TODO: navigate home
+  async logout() {
+    await this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  async getUser() {
+    return await this.authService.getUser();
   }
 }
