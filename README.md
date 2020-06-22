@@ -1,43 +1,76 @@
-# MovieApp
+# Random Youtube
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 ## Setup
 
 Make a .env file in the ./server directory similar to .env.example and put in values.
-Go to https://console.developers.google.com/
+Go to your [Google Developer's Console](https://console.developers.google.com/)
 Click edit for Oauth 2.0 Client Ids
-And enter authorized javascript origins
+And enter authorized javascript origins urls:
 For dev, mine was: 
 http://localhost:4200
-For prod, put in the deployed url.  Mine was 
+For prod, put in the deployed url.  I deployed my app to [Heroku](https://www.heroku.com "Heroku's Homepage").  Mine was 
 https://random-youtube.herokuapp.com
-and authorized redirect uris. 
+
+Enter authorized redirect uris: 
 dev: 
 http://localhost:4200/api/auth/google/callback
 prod: 
 https://random-youtube.herokuapp.com/api/auth/google/callback
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Prerequisites
 
-## Code scaffolding
+- A package manager like [npm](https://www.npmjs.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Angular Cli](https://cli.angular.io/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Installing
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run these commands in the terminal:
 
-## Running unit tests
+```
+npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+npm run dev
+```
 
-## Running end-to-end tests
+Open a new terminal tab and start the server by running
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+cd server
 
-## Further help
+npm run dev
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The app should automatically open in a browser at the url: localhost:3000
+
+### Completed Features
+
+- [x] Sign in with Google
+- [x] Request playlists and videos from YouTube
+- [x] Make a random selection of a user's videos.
+- [x] Display video thumbnails.
+- [x] Play a video when clicked.
+
+### Next Steps
+
+- [ ] Autoplay next video.
+
+## Built With
+
+Anuglar 9, Node.js, Express.
+
+## Author
+
+Brendt Bly
+
+## Acknowledgments
+
+Although this tutorial is for React, it was helpful to see how to set up calling the OAuth endpoint on the server from
+an <a> tag.
+
+https://hackernoon.com/m-e-r-n-stack-application-using-passport-for-authentication-920b1140a134
