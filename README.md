@@ -5,19 +5,23 @@ An app that displays a random selection of videos from the user's YouTube playli
 
 ## Setup
 
-Make a .env file in the ./server directory similar to .env.example and put in values.
-Go to your [Google Developer's Console](https://console.developers.google.com/)
-Click edit for Oauth 2.0 Client Ids
-And enter authorized javascript origins urls:
-For dev, mine was: 
+- Make a .env file in the ./server directory similar to .env.example and put in values.
+- Go to your [Google Developer's Console](https://console.developers.google.com/)
+- Click edit for Oauth 2.0 Client Ids
+- And enter authorized javascript origins urls:
+- For dev, mine was: 
 http://localhost:4200
-For prod, put in the deployed url.  I deployed my app to [Heroku](https://www.heroku.com "Heroku's Homepage").  Mine was 
+- For prod, put in the deployed url.  I deployed my app to [Heroku](https://- www.heroku.com "Heroku's Homepage").  Mine was 
 https://random-youtube.herokuapp.com
 
-Enter authorized redirect uris: 
+- Enter authorized redirect uris: 
+
 dev: 
+
 http://localhost:4200/api/auth/google/callback
+
 prod: 
+
 https://random-youtube.herokuapp.com/api/auth/google/callback
 
 ## Getting Started
