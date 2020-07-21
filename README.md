@@ -3,6 +3,8 @@
 An app that displays a random selection of videos from the user's YouTube playlists.
 [http://random-youtube.herokuapp.com/](http://random-youtube.herokuapp.com/)
 
+![app picture](/random-youtube.png)
+
 ## Setup
 
 - Make a .env file in the ./server directory similar to .env.example and put in values.
