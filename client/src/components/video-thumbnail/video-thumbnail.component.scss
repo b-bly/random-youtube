@@ -1,0 +1,24 @@
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .25rem;
+
+  .fa {
+    position: absolute;
+    visibility: hidden;
+    color: white;
+  }
+  
+  &:hover {
+    .fa {
+      visibility: visible;
+      opacity:.8;
+      z-index: 2;
+    }
+    img {
+      opacity:.9;
+      
+    }
+  }
+}

@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: .5rem;
+}
+
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .2);
+  cursor: pointer;
+  text-decoration: none;
+  width: min-content;
+  min-width: 170px;
+  margin-top: .5rem;
+
+  .google-icon-wrapper {
+    .google-icon-svg {
+      height: 1rem;
+    }
+  }
+  .btn-text {
+    color: #757575;
+    font-size: 14px;
+    letter-spacing: .2px;
+    font-family: 'Roboto';
+    user-select: none;
+    text-decoration: none;
+    margin: .5rem .25rem;
+  }
+  .google-icon-wrapper, .btn-text {
+    padding: .25rem;
+  }
+}
