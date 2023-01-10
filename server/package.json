@@ -12,7 +12,9 @@
     "dev:start": "ts-node src/server.ts",
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
     "start": "node ./dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm i && cd server && npm install --only=dev && npm install",
+    "postbuild": "ng build --prod && cd server && npm install && npm run build"
   },
   "author": "Brendt Bly",
   "license": "ISC",

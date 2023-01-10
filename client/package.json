@@ -9,9 +9,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "prebuild": "npm i && cd server && npm install --only=dev && npm install",
-    "postbuild": "ng build --prod && cd server && npm install && npm run build"
+    "e2e": "ng e2e"
   },
   "engines": {
     "node": "10.x"
