@@ -33,7 +33,15 @@ https://random-youtube.herokuapp.com/api/auth/google/callback
 - A package manager like [npm](https://www.npmjs.com/)
 - [Node.js](https://nodejs.org/en/)
 - [Angular Cli](https://cli.angular.io/)
+- [GCP account](https://cloud.google.com)
 
+### Configuration
+
+Create oauth credentials through gcp and set them in a .env file
+
+```
+
+```
 
 ### Installing
 

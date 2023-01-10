@@ -25,6 +25,7 @@ router.get('/', userLogged, async (req: any, res: any) => {
             data: videos
         });
     } catch (err) {
+        console.log(err)
         res.json({
             status: "error"
         });

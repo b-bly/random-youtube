@@ -10,11 +10,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-prebuild": "cd server && npm install --only=dev && npm install",
-    "heroku-postbuild": "ng build --prod && cd server && npm install && npm run build"
+    "prebuild": "npm i && cd server && npm install --only=dev && npm install",
+    "postbuild": "ng build --prod && cd server && npm install && npm run build"
   },
   "engines": {
-    "node": "10.20.1"
+    "node": "10.x"
   },
   "repository": {
     "type": "git",

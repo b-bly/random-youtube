@@ -1,0 +1,9 @@
+runtime: nodejs10
+service: random-youtube
+env_variables:
+  CENSUS_KEY: ${CENSUS_KEY}
+  NODE_ENV: 'production'
+  SESSION_SECRET: ${SESSION_SECRET}
+  CLIENT_ID: ${CLIENT_ID}
+  CLIENT_SECRET: ${CLIENT_SECRET}
+  REDIRECT_URL: ${REDIRECT_URL}
