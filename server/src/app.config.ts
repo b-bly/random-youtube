@@ -22,7 +22,7 @@ const devConfig: any = {
 }
 
 const prodConfig: any = {
-  client: 'https://random-youtube.herokuapp.com/'
+  client: 'https://random-youtube-dot-personal-374120.uc.r.appspot.com/'
 }
 
 const envConfig: any = {
@@ -35,5 +35,7 @@ const envConfig: any = {
     ...prodConfig
   }
 };
+
+envConfig.production.google.redirect_url = `https://random-youtube-dot-personal-374120.uc.r.appspot.com/api/auth/google/callback`
 
 export const config = envConfig[env];

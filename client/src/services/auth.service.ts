@@ -24,6 +24,6 @@ export class AuthService extends DataService {
   }
 
   logout<T>() {
-    return <Promise<T>>this.http.get('api/auth/user/logout').toPromise();
+    return this.http.get('api/auth/user/logout').toPromise() as Promise<T>;
   }
 }

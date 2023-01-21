@@ -1,8 +1,11 @@
 // for dev environment variables
 
 if (process.env.NODE_ENV !== 'production') {
+	console.log('dev environment')
 	const dotenv = require("dotenv").config();
 	if (dotenv.error) { console.log(dotenv.error); }
+} else {
+	console.log('production environment')
 }
 import express from "express";
 import bodyParser from 'body-parser';
@@ -11,7 +14,7 @@ import { passport } from './passport'
 const session = require('express-session');
 import * as path from 'path';
 import { config } from './app.config';
-const clientPath = '../../dist/movie-app/';
+const clientPath = '../client/dist/movie-app/';
 
 // Routes
 
@@ -90,6 +93,8 @@ app.get('*', (req, res) => {
 });
 app.use('/', express.static(path.join(__dirname, clientPath)));
 
+console.log('Redirect url')
+console.log(config.production.google.redirect_url)
 
 // Starting Server
 app.listen(config.port, () => {
