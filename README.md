@@ -37,10 +37,13 @@ https://random-youtube.herokuapp.com/api/auth/google/callback
 
 ### Configuration
 
-Create oauth credentials through gcp and set them in a .env file
+Create oauth credentials through gcp and set them as well as a redirect url and session secret (any string) in a .env file
 
 ```
-
+SESSION_SECRET=string
+CLIENT_ID=
+CLIENT_SECRET=
+REDIRECT_URL=http://localhost:8080/api/auth/google/callback
 ```
 
 ### Installing

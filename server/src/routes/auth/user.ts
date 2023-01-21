@@ -11,7 +11,7 @@ router.get(
     if (req.isAuthenticated()) {
       res.json({ name: req.user.name, loggedIn: true });
 
-      
+
     } else {
       // send status: not authenticated or redirect
       res.json({ loggedIn: false });

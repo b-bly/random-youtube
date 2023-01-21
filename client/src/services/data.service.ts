@@ -10,7 +10,7 @@ export class DataService {
 
   async get<T>(uri: string, params?: any): Promise<T> {
     try {
-      const res = <Promise<T>>this.http.get(uri, {params}).toPromise();
+      const res = this.http.get(uri, {params}).toPromise() as Promise<T>;
       return res;
     } catch (e) {
       console.log(e.message);
@@ -19,19 +19,19 @@ export class DataService {
   }
 
   async post<T>(uri: string, body?: any): Promise<T> {
-    return <Promise<T>>this.http.post(uri, body).toPromise();
+    return this.http.post(uri, body).toPromise() as Promise<T>;
   }
 
   async patch<T>(uri: string, body?: any): Promise<T> {
-    return <Promise<T>>this.http.patch(uri, body).toPromise();
+    return this.http.patch(uri, body).toPromise() as Promise<T>;
   }
 
   async put<T>(uri: string, body?: any): Promise<T> {
-    return <Promise<T>>this.http.put(uri, body).toPromise();
+    return this.http.put(uri, body).toPromise() as Promise<T>;
   }
 
   async delete<T>(uri: string, params?: any): Promise<T> {
-    return <Promise<T>>this.http.delete(uri, {params}).toPromise();
+    return this.http.delete(uri, {params}).toPromise() as Promise<T>;
   }
 
 }

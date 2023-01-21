@@ -1,0 +1,7 @@
+source .env && gcloud app deploy
+
+https://accounts.google.com/signin/oauth/error/v2?
+authError=Cg9pbnZhbGlkX3JlcXVlc3QSKE1pc3NpbmcgcmVxdWlyZWQgcGFyYW1ldGVyOiByZWRpcmVjdF91cmkaN2h0dHBzOi8vZGV2ZWxvcGVycy5nb29nbGUuY29tL2lkZW50aXR5L3Byb3RvY29scy9vYXV0aDIgkAM%3D&
+client_id=
+903887188265-dhb0v0lcvqhjc42fg0smc7j7jjiaah3v.apps.googleusercontent.com
+903887188265-dhb0v0lcvqhjc42fg0smc7j7jjiaah3v.apps.googleusercontent.com
